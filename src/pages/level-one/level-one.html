@@ -2,12 +2,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Level One</ion-title>
+    <ion-title>Level One &nbsp; <ion-icon name="heart"></ion-icon> {{health}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+ <ion-card>
+  <p>{{outcome}}</p>
+ </ion-card>
+ <div *ngIf="scene1">
+ <button ion-button outline full (click)="scene1action('dead')">Play Dead</button>
+ <button ion-button outline full (click)="scene1action('attack')">Attack</button>
+ <button ion-button outline full (click)="scene1action('scream')">Scream For Help</button>
+ </div>
+ <div *ngIf="scene2">
+ <button ion-button outline full (click)="scene1action('dead')">Dead</button>
+ <button ion-button outline full (click)="scene1action('attack')">Att</button>
+ <button ion-button outline full (click)="scene1action('scream')">Help</button>
+ </div>
 </ion-content>

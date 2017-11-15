@@ -20,17 +20,18 @@ export class LevelOnePage {
 
    action: any = ["Wake up in a trunk, the car stopps", "another thing happens"]
    response: any = [];
-   outcome: string;
+   outcome1: any [];
+   scene: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.health =  Math.floor((Math.random() * 13) + 60);
-    this.outcome = this.action[0];
+    this.scene = this.action[0];
     this.scene1 =  true;
   }
 
   scene1action(action: any){
     console.log(action);
-    this.outcome = this.action[1];
+    this.scene = this.action[1];
     this.scene1 =  false;
     this.scene2 = true;
     this.health = this.health - 10;

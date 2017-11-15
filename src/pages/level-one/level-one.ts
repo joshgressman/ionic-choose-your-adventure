@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-level-one',
@@ -18,24 +18,36 @@ export class LevelOnePage {
    scene9: boolean;
    scene10: boolean;
 
-   action: any = ["Wake up in a trunk, the car stopps", "another thing happens"]
+   //Action is the situation that needs to be reacted to
+   action: any = ["Wake up in a trunk, the car stops", "another thing happens"]
    response: any = [];
-   outcome1: any [];
+   //Outcomes are the reactions to the actions taken
+   outcome1: any = ["The attackers grab your hands and feet and cary you out of the car"];
+   //scene is the action response displayed in the ui
+
+   //Scene is what is dispalyed in the UI dynamically 
    scene: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.health =  Math.floor((Math.random() * 13) + 60);
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController) {
+    this.health = 65;
     this.scene = this.action[0];
     this.scene1 =  true;
   }
 
   scene1action(action: any){
     console.log(action);
-    this.scene = this.action[1];
+    if(action == 'dead'){
+      let response = this.outcome1[0]
+     let alert = this.alertCtrl.create({
+       title: "Playing Dead",
+       subTitle: response,
+       buttons: ['OK']
+     });
+      alert.present();
+      this.health = this.health + 5;
+    }
     this.scene1 =  false;
     this.scene2 = true;
-    this.health = this.health - 10;
-
   }
 
 
